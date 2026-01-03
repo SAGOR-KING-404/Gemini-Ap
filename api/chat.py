@@ -11,7 +11,7 @@ def chat_api():
     if not text:
         return jsonify({
             "error": "Missing text parameter",
-            "api_by": "@DevZeron"
+            "api_by": "SaGor"
         }), 400
 
     timestamp = int(time.time() * 1000)
@@ -36,22 +36,22 @@ def chat_api():
         r = requests.post("https://chat2.free2gpt.com/api/generate", json=payload, headers=headers)
 
         try:
-            #Proper JSON Api By @DevZeron
+            #Proper JSON Api By SaGor
             data = r.json()
             reply = data.get("response") or data
         except Exception:
-            #Text Api By @DevZeron
+            #Text Api By SaGor
             reply = r.text.strip()
 
         return jsonify({
             "reply": reply,
-            "api_by": "@DevZeron"
+            "api_by": "SaGor"
         })
 
     except Exception as e:
         return jsonify({
             "error": str(e),
-            "api_by": "@DevZeron"
+            "api_by": "SaGor"
         }), 500
 
 
